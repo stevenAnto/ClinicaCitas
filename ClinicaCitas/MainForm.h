@@ -1,7 +1,7 @@
 #pragma once
 #include "Consultorio.h"
 #include "Doctor.h"
-#include "MyForm.h"
+#include "Citas.h"
 
 namespace ClinicaCitas {
 
@@ -162,7 +162,7 @@ namespace ClinicaCitas {
 		obj.ShowDialog();
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		MyForm obj;
+		Citas obj;
 		obj.ShowDialog();
 	}
 };
