@@ -1,6 +1,7 @@
 #pragma once
 #include "Consultorio.h"
 #include "Doctor.h"
+#include "MyForm.h"
 
 namespace ClinicaCitas {
 
@@ -121,6 +122,7 @@ namespace ClinicaCitas {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Cita";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MainForm::button4_Click);
 			// 
 			// button5
 			// 
@@ -157,6 +159,10 @@ namespace ClinicaCitas {
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		Consultorio obj;
+		obj.ShowDialog();
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm obj;
 		obj.ShowDialog();
 	}
 };
