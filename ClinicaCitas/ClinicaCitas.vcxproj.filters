@@ -27,6 +27,9 @@
     <ClCompile Include="Citas.cpp">
       <Filter>Archivos de encabezado\Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Paciente.cpp">
+      <Filter>Archivos de encabezado\Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -39,6 +42,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Citas.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Paciente.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

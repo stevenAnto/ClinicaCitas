@@ -125,6 +125,7 @@
     <ClCompile Include="Consultorio.cpp" />
     <ClCompile Include="Doctor.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="Paciente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Citas.h">
@@ -137,6 +138,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Paciente.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paciente.resx">
+      <DependentUpon>Paciente.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
