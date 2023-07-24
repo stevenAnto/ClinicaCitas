@@ -1,4 +1,9 @@
 #pragma once
+#include "crudPacientesInterface.h"
+#include <vector>
+#include <iostream>
+#include <msclr/marshal_cppstd.h>
+#include <string>
 
 namespace ClinicaCitas {
 
@@ -58,6 +63,7 @@ namespace ClinicaCitas {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+
 
 	protected:
 
@@ -308,6 +314,19 @@ namespace ClinicaCitas {
 	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Paciente_Load(System::Object^ sender, System::EventArgs^ e) {
+		//std::vector<Paciente> v= Leer();
+		//std::cout <<  "--->" << Leer()[0].nombres << std::endl;
+		std::vector<Estructura::Paciente> pacientes = Leer();
+		//String^ net = msclr::interop::marshal_as<String^>(Leer()[0].nombres);
+		int i = 0;
+		for (Estructura::Paciente p : pacientes) {
+			dgvPacientes->Rows->Add();
+			dgvPacientes->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(p.PacCod));
+			dgvPacientes->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(p.nombres);
+			dgvPacientes->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(p.apellidos);
+			dgvPacientes->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(std::to_string(p.telefono));
+			i++;
+		}
 	}
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -322,6 +341,7 @@ namespace ClinicaCitas {
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		Crear(1234,"Bryan","Hancco",455326);
 	}
 };
 }
