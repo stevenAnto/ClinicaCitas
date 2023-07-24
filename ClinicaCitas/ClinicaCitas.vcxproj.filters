@@ -30,6 +30,9 @@
     <ClCompile Include="crudPacientes.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
+    <ClCompile Include="AgregarPaciente.cpp">
+      <Filter>Archivos de encabezado\Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="crudPacientesInterface.h">
       <Filter>Archivos de recursos</Filter>
+    </ClInclude>
+    <ClInclude Include="AgregarPaciente.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

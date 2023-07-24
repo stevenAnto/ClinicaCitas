@@ -1,9 +1,11 @@
 #pragma once
+#include <Windows.h>
 #include "crudPacientesInterface.h"
 #include <vector>
 #include <iostream>
 #include <msclr/marshal_cppstd.h>
 #include <string>
+#include "AgregarPaciente.h"
 
 namespace ClinicaCitas {
 
@@ -224,9 +226,11 @@ namespace ClinicaCitas {
 					this->Column2, this->Column3, this->Column4
 			});
 			this->dgvPacientes->Location = System::Drawing::Point(52, 170);
+			this->dgvPacientes->MultiSelect = false;
 			this->dgvPacientes->Name = L"dgvPacientes";
 			this->dgvPacientes->Size = System::Drawing::Size(453, 109);
 			this->dgvPacientes->TabIndex = 12;
+			this->dgvPacientes->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Paciente::dgvPacientes_CellClick);
 			this->dgvPacientes->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Paciente::dataGridView1_CellContentClick);
 			// 
 			// Codigo
@@ -306,28 +310,44 @@ namespace ClinicaCitas {
 		this->Close();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		int i = dgvPacientes->CurrentCell->RowIndex;
+		//String^ v = dgvPacientes->Rows[i]->Cells[0]->Value->ToString();
+		//int cod = stoi(msclr::interop::marshal_as<std::string>(v));
+		//bool rpta = (bool) MessageBox::Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons::YesNo);
+		if(MessageBox::Show("¿Estas seguro de eliminar?", "Confirm Delete!!", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes) {
+			Borrar(i+1);
+			dgvPacientes->Rows->Clear();
+			ReLoad();
+		}
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Paciente_Load(System::Object^ sender, System::EventArgs^ e) {
+		ReLoad();
+	}
+
+	private: System::Void ReLoad() {
 		//std::vector<Paciente> v= Leer();
 		//std::cout <<  "--->" << Leer()[0].nombres << std::endl;
 		std::vector<Estructura::Paciente> pacientes = Leer();
-		//String^ net = msclr::interop::marshal_as<String^>(Leer()[0].nombres);
-		int i = 0;
-		for (Estructura::Paciente p : pacientes) {
-			dgvPacientes->Rows->Add();
-			dgvPacientes->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(p.PacCod));
-			dgvPacientes->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(p.nombres);
-			dgvPacientes->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(p.apellidos);
-			dgvPacientes->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(std::to_string(p.telefono));
-			i++;
+		//String^ net = msclr::interop::marshal_as<String^>(Leer()[0].nombres
+		for (int i = 0; i < pacientes.size(); i++) {
+			Estructura::Paciente p = pacientes[i];
+			llenarData(p.PacCod, p.nombres, p.apellidos, p.telefono, i);
 		}
 	}
+		   private: System::Void llenarData(int p1, const char* p2, const char* p3, int p4, int i) {
+			   dgvPacientes->Rows->Add();
+			   dgvPacientes->Rows[i]->Cells[0]->Value = msclr::interop::marshal_as<String^>(std::to_string(p1));
+			   dgvPacientes->Rows[i]->Cells[1]->Value = msclr::interop::marshal_as<String^>(p2);
+			   dgvPacientes->Rows[i]->Cells[2]->Value = msclr::interop::marshal_as<String^>(p3);
+			   dgvPacientes->Rows[i]->Cells[3]->Value = msclr::interop::marshal_as<String^>(std::to_string(p4));
+		   }
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -339,9 +359,28 @@ namespace ClinicaCitas {
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		int i = dgvPacientes->CurrentCell->RowIndex;
+		AgregarPaciente obj;
+		//String^ net = msclr::interop::marshal_as<String^>(dgvPacientes->Rows[i]->Cells[0]->Value);
+		obj.estaAgregando = false;
+		obj.Cod->Text = dgvPacientes->Rows[i]->Cells[0]->Value->ToString();
+		obj.Nom->Text = dgvPacientes->Rows[i]->Cells[1]->Value->ToString();
+		obj.Ape->Text = dgvPacientes->Rows[i]->Cells[2]->Value->ToString();
+		obj.Tel->Text = dgvPacientes->Rows[i]->Cells[3]->Value->ToString();
+		obj.ShowDialog();
+		dgvPacientes->Rows->Clear();
+		ReLoad();
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		Crear(1234,"Bryan","Hancco",455326);
+		AgregarPaciente obj;
+		obj.estaAgregando = true;
+		obj.ShowDialog();
+		dgvPacientes->Rows->Clear();
+		ReLoad();
 	}
+private: System::Void dgvPacientes_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	
+	
+}
 };
 }

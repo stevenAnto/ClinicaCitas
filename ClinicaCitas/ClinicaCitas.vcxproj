@@ -121,6 +121,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AgregarPaciente.cpp" />
     <ClCompile Include="Citas.cpp" />
     <ClCompile Include="crudPacientes.cpp" />
     <ClCompile Include="Doctor.cpp" />
@@ -128,6 +129,9 @@
     <ClCompile Include="Paciente.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AgregarPaciente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Citas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -143,6 +147,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AgregarPaciente.resx">
+      <DependentUpon>AgregarPaciente.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Citas.resx">
       <DependentUpon>Citas.h</DependentUpon>
     </EmbeddedResource>
