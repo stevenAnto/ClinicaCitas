@@ -122,6 +122,7 @@ namespace ClinicaCitas {
 			this->comboBox1->Size = System::Drawing::Size(281, 21);
 			this->comboBox1->TabIndex = 9;
 			this->comboBox1->Text = L"Seleccione Especialidad";
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Citas::comboBox1_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -217,12 +218,13 @@ namespace ClinicaCitas {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 18;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &Citas::pictureBox1_Click);
 			// 
 			// Citas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(420, 340);
+			this->ClientSize = System::Drawing::Size(454, 376);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button4);
@@ -247,6 +249,10 @@ namespace ClinicaCitas {
 	private: System::Void Citas_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

@@ -122,16 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Citas.cpp" />
-    <ClCompile Include="Consultorio.cpp" />
     <ClCompile Include="Doctor.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Paciente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Citas.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Consultorio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Doctor.h">
@@ -147,9 +143,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Citas.resx">
       <DependentUpon>Citas.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Consultorio.resx">
-      <DependentUpon>Consultorio.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor.resx">
       <DependentUpon>Doctor.h</DependentUpon>

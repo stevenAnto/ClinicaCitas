@@ -21,9 +21,6 @@
     <ClCompile Include="Doctor.cpp">
       <Filter>Archivos de encabezado\Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Consultorio.cpp">
-      <Filter>Archivos de encabezado\Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Citas.cpp">
       <Filter>Archivos de encabezado\Archivos de origen</Filter>
     </ClCompile>
@@ -36,9 +33,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Doctor.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Consultorio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Citas.h">
