@@ -4,12 +4,20 @@
 #include <vector>
 
 namespace Estructura{
+    struct FechaH{
+        int minutos;
+        int hora;
+        int dia;
+        int mes;
+        int anio;
+        FechaH()=default;
+    };
     struct Paciente {
         int PacCod;
         char nombres[50];
         char apellidos[50];
         int telefono;
-
+        FechaH fechaCita;
         Paciente() = default;
     };
 }

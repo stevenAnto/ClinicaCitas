@@ -6,6 +6,7 @@
 using namespace std;
 //archivo exclusivo para Pacientes en archivo.dat
 const char* nombre_archivo = "archivo.dat";
+std::vector<Estructura::FechaH> turnosMes;
 
 
 //La funcion Leer() devuevel un vector<Paciente> de los pacientes que hay en

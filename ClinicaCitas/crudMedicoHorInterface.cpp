@@ -1,21 +1,21 @@
-#include "crudPacientesInterface.h"
+#include "crudMediCoHorInterface.h"
 #include <iostream>
 #include <cstring>
 #include <vector>
 
 using namespace std;
 //archivo exclusivo para Pacientes en archivo.dat
-const char* nombre_archivo = "archivo.dat";
+const char* nombre_archivo = "medicosH.dat";
 //std::vector<Estructura::FechaH> turnos;
 bool esDomingo(int dia, int mes, int anio) {
-    if (mes < 3) {
-        mes += 12;
-        anio--;
-    }
-    int k = anio % 100;
-    int j = anio / 100;
-    int diaSemana = (dia + 13 * (mes + 1) / 5 + k + k / 4 + j / 4 - 2 * j) % 7;
-    return (diaSemana == 1);
+	if (mes < 3) {
+		mes += 12;
+		anio--;
+	}
+	int k = anio % 100;
+	int j = anio / 100;
+	int diaSemana = (dia + 13 * (mes + 1) / 5 + k + k / 4 + j / 4 - 2 * j) % 7;
+	return (diaSemana == 1);
 }
 std::vector<Estructura::FechaH> llenarTurnosMes(int anio, int mes){
 	cout<<"entro fucnion"<<endl;
@@ -52,17 +52,6 @@ std::vector<Estructura::FechaH> llenarTurnosMes(int anio, int mes){
 	fechaFin.anio = anio;
 	// Recorrer las fechas y agregar los turnos al vector
 	Estructura::FechaH fechaActual = fechaInicio;
-	cout<<"linea 45"<<endl;
-	cout<<"FechaInicio"<<fechaInicio.dia<<endl;
-	cout<<"FechaInicio"<<fechaInicio.hora<<endl;
-	cout<<"FechaInicio"<<fechaInicio.mes<<endl;
-	cout<<"FechaFinal"<<fechaFin.dia<<endl;
-	cout<<"FechaFinal"<<fechaFin.hora<<endl;
-	cout<<"FechaFinal"<<fechaFin.mes<<endl;
-	cout<<"Feccha actua "<<fechaActual.hora<<endl;
-	cout<<"Feccha actua "<<fechaActual.dia<<endl;
-	cout<<"Feccha actua "<<fechaActual.mes<<endl;
-	cout<<"Feccha actua "<<fechaActual.anio<<endl;
 
 	while (fechaActual.dia<=fechaFin.dia) {
 		// Agregar la fecha actual al vector
@@ -88,27 +77,11 @@ std::vector<Estructura::FechaH> llenarTurnosMes(int anio, int mes){
 	}
 
 	return turnosMes;
+	//En el mes de Agosto hay 432 turnos
 }
-int main() {
-	cout<<"entro main"<<endl;
-	int mes = 8; // Agosto
-	int anio = 2023;
-	cout<<"entro main"<<endl;
-
-	std::vector<Estructura::FechaH> turnosMes = llenarTurnosMes(anio, mes);
-
-	// Imprimir los turnos del mes de agosto de 2023
-	for (const auto& turno : turnosMes) {
-		std::cout << turno.dia << "/" << turno.mes << "/" << turno.anio << " ";
-		cout << turno.hora << ":" << (turno.minutos == 0 ? "00" : "30") <<endl;
-	}
-
-	return 0;
-}
-
 //La funcion Leer() devuevel un vector<Paciente> de los pacientes que hay en
 //el fichero de Pacientes
-std::vector<Estructura::Paciente> Leer() {
+std::vector<Estructura::MedicoH> leerMedH() {
 	//	system("cls"); //no necesario
 	//FILE es un tipo de estructura de la biblioteca estandar
 	//Soporta funciones de fopen,fwrite,fread,fclose
@@ -116,34 +89,37 @@ std::vector<Estructura::Paciente> Leer() {
 	if (!archivo) {
 		cout << "No existe tal archivo" << endl;
 	}
-	std::vector<Estructura::Paciente> pacientes;
-	Estructura::Paciente paciente;
+	std::vector<Estructura::MedicoH> medicosH;
+	Estructura::MedicoH medicoH;
 	// indice o pocision del registro(fila) dentro del archivo
 	//Almaceno en paciente, el dato  que se lee desde archivo
-	while (fread(&paciente, sizeof(Estructura::Paciente), 1, archivo) == 1) {
-		pacientes.push_back(paciente);
+	while (fread(&medicoH, sizeof(Estructura::MedicoH), 1, archivo) == 1) {
+		medicosH.push_back(medicoH);
 	}
 	fclose(archivo);
-	return pacientes;
+	return medicosH;
 }
 
-void Crear(int cod, const char* nombre, const char* apellido, int fono) {//sin const no funciona al pasar puntero, estas
+void crearMedH(int cod, const char* nombre, const char* apellido, int medCmp, const char* medEsp,Estructura:: FechaH f, const char*medConsultorio, char medEstadoDis){//sin const no funciona al pasar puntero, estas
 	//intentando modificar un dato que fijo como char[50]
 
 	FILE* archivo = fopen(nombre_archivo, "a+b");
 	char res;
-	Estructura::Paciente paciente;
+	Estructura::MedicoH medico;
 	fflush(stdin);//limpia buffer de entrada y salida
-	paciente.PacCod = cod;
-	strcpy(paciente.nombres, nombre);
-	strcpy(paciente.apellidos, apellido);
-	paciente.telefono = fono;
-	fwrite(&paciente, sizeof(Estructura::Paciente), 1, archivo);
+	medico.medCod = cod;
+	strcpy(medico.medNom, nombre);
+	strcpy(medico.medApe, apellido);
+	medico.medCmp = medCmp;
+	strcpy(medico.medEsp, medEsp);
+	medico.fechaCita = f;
+	strcpy(medico.medConsultorio, medConsultorio);
+	medEstadoDis = medEstadoDis;
+	fwrite(&medico, sizeof(Estructura::MedicoH), 1, archivo);
 	fclose(archivo);
-	//Leer();//solo para ver que se esta ingresando correctamente
 }
 /*Los registros tienen que coincidir su numero de registro con el numero de id*/
-void Actualizar(int id, const char* nombre, const char* apellido, int fono) {
+/*void Actualizar(int id, const char* nombre, const char* apellido, int fono) {
 
 	id--;//Cuento desde 0
 	FILE* archivo = fopen(nombre_archivo, "r+b");
@@ -188,8 +164,36 @@ void Borrar(int id) {
 	fclose(archivo_temp);
 	Leer();
 }
+*/
 
+int main() {
+	cout<<"entro main"<<endl;
+	int mes = 8; // Agosto
+	int anio = 2023;
 
+	std::vector<Estructura::FechaH> turnosMes = llenarTurnosMes(anio, mes);
+
+	// Imprimir los turnos del mes de agosto de 2023
+	for (const auto& turno : turnosMes) {
+		std::cout << turno.dia << "/" << turno.mes << "/" << turno.anio << " ";
+		cout << turno.hora << ":" << (turno.minutos == 0 ? "00" : "30") <<endl;
+	}
+	for(int i = 0;i<turnosMes.size(); i++){
+		crearMedH(29455646, "Hector", "Zarate",4567, "Cardiologia",turnosMes[i],"C1",'D');
+		crearMedH(71548246, "Anibal", "Torres",1258, "Medicina General",turnosMes[i],"M1",'D');
+		crearMedH(15982456, "Castillo", "Terrones",1598, "Gastroenterologia",turnosMes[i],"M1",'D');
+		crearMedH(45821478, "Dina", "Boluarte",8521, "Neumologia",turnosMes[i],"M1",'D');
+	}
+	vector<Estructura::MedicoH> medicosLeidos = leerMedH();
+	for (const auto& medico : medicosLeidos) {
+		std::cout << medico.medCod << ":" << medico.medNom << ":" << medico.medCmp << " ";
+		std::cout << medico.fechaCita.dia << "/" << medico.fechaCita.mes << "/" << medico.fechaCita.anio << " ";
+		cout << medico.fechaCita.hora << ":" << (medico.fechaCita.minutos == 0 ? "00" : "30") <<endl;
+	}
+	cout<<"tamanio of  vector medicosLeidos "<<medicosLeidos.size()<<endl;
+
+	return 0;
+}
 
 
 
@@ -203,6 +207,8 @@ void Borrar(int id) {
 
 
 */
+
+/*
 void buscar_PacCod() {
 	FILE* archivo = fopen(nombre_archivo, "rb");
 	int pos = 0, indice = 0, cod = 0;
@@ -225,7 +231,7 @@ void buscar_PacCod() {
 
 	fclose(archivo);
 }
-/*void buscar_PacCod(){
+void buscar_PacCod(){
 
 	FILE* archivo = fopen(nombre_archivo, "rb");
 
@@ -258,7 +264,6 @@ void buscar_PacCod() {
 	fclose(archivo);
 	system("PAUSE");
 	}
-	*/
 
 void buscar_indice() {
 	FILE* archivo = fopen(nombre_archivo, "rb");
@@ -291,4 +296,4 @@ void imprimirVector(vector<Estructura::Paciente> datos) {
 		cout << dato.PacCod << "," << dato.nombres <<
 			"," << dato.apellidos << "..." << endl;
 	}
-}
+}*/

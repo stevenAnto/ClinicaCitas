@@ -25,5 +25,6 @@ namespace Estructura{
         MedicoH()=default;
     };
 }
-
+std::vector<Estructura::MedicoH> leerMedH();
+void crearMedH(int cod, const char* nombre, const char* apellido, int medCmp, const char* medEsp,Estructura:: FechaH f, const char*medConsultorio, char medEstadoDis);
 #endif //

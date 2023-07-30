@@ -1,34 +1,24 @@
 #include <iostream>
-#include "crudPacientesInterface.h"
+#include ".h"
 
 int main() {
-  // Crear pacientes
-  Crear(1, "Juan", "Perez", 123456789);
-  Crear(2, "Maria", "Lopez", 987654321);
+	cout<<"entro main"<<endl;
+	int mes = 8; // Agosto
+	int anio = 2023;
 
-  // Leer pacientes
-  std::vector<Estructura::Paciente> pacientes = Leer();
+	std::vector<Estructura::FechaH> turnosMes = llenarTurnosMes(anio, mes);
 
-  // Imprimir pacientes
-  imprimirVector(pacientes);
+	// Imprimir los turnos del mes de agosto de 2023
+	for (const auto& turno : turnosMes) {
+		std::cout << turno.dia << "/" << turno.mes << "/" << turno.anio << " ";
+		cout << turno.hora << ":" << (turno.minutos == 0 ? "00" : "30") <<endl;
+	}
+	for(int i = 0;i<turnosMes.size(); i++){
+		crearMedH(29455646, "Hector", "Zarate",4567, "Cardiologia",turnosMes[i],"C1","D");
+		crearMedH(71548246, "Anibal", "Torres",1258, "Medicina General",turnosMes[i],"M1","D");
+		crearMedH(15982456, "Castillo", "Terrones",1598, "Gastroenterologia",turnosMes[i],"M1","D");
+		crearMedH(45821478, "Dina", "Boluarte",8521, "Neumologia",turnosMes[i],"M1","D");
+	}
+	return 0;
 
-  // Actualizar un paciente
-  Actualizar(1, "Juan Carlos", "Perez Gomez", 555555555);
-
-  // Leer pacientes actualizados
-  pacientes = Leer();
-
-  // Imprimir pacientes actualizados
-  imprimirVector(pacientes);
-
-  // Borrar un paciente
-  Borrar(2);
-
-  // Leer pacientes después de borrar uno
-  pacientes = Leer();
-
-  // Imprimir pacientes después de borrar uno
-  imprimirVector(pacientes);
-
-  return 0;
 }
