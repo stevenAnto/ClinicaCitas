@@ -166,7 +166,7 @@ void Borrar(int id) {
 }
 */
 
-int main() {
+/*int main() {
 	cout<<"entro main"<<endl;
 	int mes = 8; // Agosto
 	int anio = 2023;
@@ -193,7 +193,7 @@ int main() {
 	cout<<"tamanio of  vector medicosLeidos "<<medicosLeidos.size()<<endl;
 
 	return 0;
-}
+}*/
 
 
 
