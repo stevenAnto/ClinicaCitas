@@ -2,6 +2,7 @@
 #ifndef CRUD_PACIENTES_H
 #define CRUD_PACIENTES_H
 #include <vector>
+#include <map>
 
 namespace Estructura{
     struct FechaH{
@@ -23,10 +24,11 @@ namespace Estructura{
 }
 
 
-std::vector<Estructura::Paciente> Leer();
+std::map<int,Estructura::Paciente> Leer();
 void Crear(int cod, const char* nombre, const char* apellido, int fono);
 void Actualizar(int id, const char* nombre, const char* apellido, int fono);
 void Borrar(int id);
 void imprimirVector(std::vector<Estructura::Paciente>);
+void imprimirMap(std::map<int,Estructura::Paciente>);
 
 #endif // CRUD_PACIENTES_H
