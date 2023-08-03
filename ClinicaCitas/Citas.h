@@ -89,37 +89,45 @@ namespace ClinicaCitas {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(44, 267);
+			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(45, 283);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(93, 27);
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Agregar";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// comboBox3
 			// 
+			this->comboBox3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(73, 120);
+			this->comboBox3->Location = System::Drawing::Point(73, 127);
 			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(281, 21);
+			this->comboBox3->Size = System::Drawing::Size(281, 26);
 			this->comboBox3->TabIndex = 11;
 			this->comboBox3->Text = L"Seleccione Paciente";
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(73, 93);
+			this->comboBox2->Location = System::Drawing::Point(73, 98);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(281, 21);
+			this->comboBox2->Size = System::Drawing::Size(281, 26);
 			this->comboBox2->TabIndex = 10;
 			this->comboBox2->Text = L"Seleccione Médico";
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Location = System::Drawing::Point(73, 66);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(281, 21);
+			this->comboBox1->Size = System::Drawing::Size(281, 26);
 			this->comboBox1->TabIndex = 9;
 			this->comboBox1->Text = L"Seleccione Especialidad";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Citas::comboBox1_SelectedIndexChanged);
@@ -127,46 +135,56 @@ namespace ClinicaCitas {
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->label2->Location = System::Drawing::Point(70, 40);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(196, 13);
+			this->label2->Size = System::Drawing::Size(345, 18);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Rellene los siguientes datos para su cita";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Font = (gcnew System::Drawing::Font(L"Verdana", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->label1->Location = System::Drawing::Point(187, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(50, 20);
+			this->label1->Size = System::Drawing::Size(64, 23);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Citas";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(179, 267);
+			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(180, 283);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(93, 27);
 			this->button2->TabIndex = 14;
 			this->button2->Text = L"Modificar";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(302, 267);
+			this->button3->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(303, 283);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(93, 27);
 			this->button3->TabIndex = 15;
 			this->button3->Text = L"Borrar";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(302, 305);
+			this->button4->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->Location = System::Drawing::Point(303, 321);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(93, 27);
 			this->button4->TabIndex = 16;
 			this->button4->Text = L"A";
 			this->button4->UseVisualStyleBackColor = true;
@@ -181,7 +199,7 @@ namespace ClinicaCitas {
 			});
 			this->dataGridView1->Location = System::Drawing::Point(44, 159);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(333, 102);
+			this->dataGridView1->Size = System::Drawing::Size(559, 102);
 			this->dataGridView1->TabIndex = 17;
 			// 
 			// Cod
@@ -224,7 +242,7 @@ namespace ClinicaCitas {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(454, 376);
+			this->ClientSize = System::Drawing::Size(690, 376);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button4);
@@ -253,6 +271,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }

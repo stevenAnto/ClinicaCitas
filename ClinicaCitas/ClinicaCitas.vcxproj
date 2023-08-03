@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="AgregarPaciente.cpp" />
     <ClCompile Include="Citas.cpp" />
+    <ClCompile Include="crudMedicoHorInterface.cpp" />
     <ClCompile Include="crudPacientes.cpp" />
     <ClCompile Include="Doctor.cpp" />
     <ClCompile Include="MainForm.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Citas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="crudMediCoHorInterface.h" />
     <ClInclude Include="crudPacientesInterface.h" />
     <ClInclude Include="Doctor.h">
       <FileType>CppForm</FileType>
@@ -164,7 +166,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="archivo.dat" />
+    <None Include="listaCita.dat" />
+    <None Include="medicosH.dat" />
+    <None Include="pacientes.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

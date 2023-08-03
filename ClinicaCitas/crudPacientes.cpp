@@ -5,7 +5,7 @@
 
 using namespace std;
 //archivo exclusivo para Pacientes en archivo.dat
-const char* nombre_archivo = "archivo.dat";
+const char* nombre_archivo = "pacientes.dat";
 
 
 //La funcion Leer() devuevel un vector<Paciente> de los pacientes que hay en
@@ -63,7 +63,7 @@ void Actualizar(int id, const char* nombre, const char* apellido, int fono) {
 }
 
 void Borrar(int id) {
-	const char* nombre_archivo_temp = "archivo_temp.dat";
+	const char* nombre_archivo_temp = "pacientes_temp.dat";
 	FILE* archivo_temp = fopen(nombre_archivo_temp, "w+b");
 	FILE* archivo = fopen(nombre_archivo, "rb");
 	Estructura::Paciente paciente;
