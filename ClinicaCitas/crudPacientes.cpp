@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
 //archivo exclusivo para Pacientes en archivo.dat
@@ -16,7 +17,8 @@ std::vector<Estructura::Paciente> Leer() {
 	//Soporta funciones de fopen,fwrite,fread,fclose
 	FILE* archivo = fopen(nombre_archivo, "rb");
 	if (!archivo) {
-		cout << "No existe tal archivo" << endl;
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
 	}
 	std::vector<Estructura::Paciente> pacientes;
 	Estructura::Paciente paciente;
@@ -33,6 +35,10 @@ void Crear(int cod, const char* nombre, const char* apellido, int fono) {//sin c
 	//intentando modificar un dato que fijo como char[50]
 
 	FILE* archivo = fopen(nombre_archivo, "a+b");
+	if (!archivo) {
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
+	}
 	char res;
 	Estructura::Paciente paciente;
 	fflush(stdin);//limpia buffer de entrada y salida
@@ -49,6 +55,10 @@ void Actualizar(int id, const char* nombre, const char* apellido, int fono) {
 
 	id--;//Cuento desde 0
 	FILE* archivo = fopen(nombre_archivo, "r+b");
+	if (!archivo) {
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
+	}
 	Estructura::Paciente paciente;
 	//Los id tienen que ser secuenciales
 	//Me ubico en el id correcto
@@ -66,6 +76,10 @@ void Borrar(int id) {
 	const char* nombre_archivo_temp = "pacientes_temp.dat";
 	FILE* archivo_temp = fopen(nombre_archivo_temp, "w+b");
 	FILE* archivo = fopen(nombre_archivo, "rb");
+	if (!archivo) {
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
+	}
 	Estructura::Paciente paciente;
 	int id_n = 0;
 	//Escribo en un archivo temporal los que no coinciden con el indice

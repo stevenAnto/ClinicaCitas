@@ -90,7 +90,8 @@ std::vector<Estructura::MedicoH> leerMedH() {
 	//Soporta funciones de fopen,fwrite,fread,fclose
 	FILE* archivo = fopen(nombre_archivoMedH, "rb");
 	if (!archivo) {
-		cout << "No existe tal archivo" << endl;
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
 	}
 	std::vector<Estructura::MedicoH> medicosH;
 	Estructura::MedicoH medicoH;
@@ -107,6 +108,10 @@ void crearMedH(int cod, const char* nombreMed, const char* nombrePac, int medCmp
 	//intentando modificar un dato que fijo como char[50]
 
 	FILE* archivo = fopen(nombre_archivoMedH, "a+b");
+	if (!archivo) {
+		throw std::runtime_error("No se puede abrir el archivo");
+		//cout << "No existe tal archivo" << endl;
+	}
 	char res;
 	Estructura::MedicoH medico;
 	fflush(stdin);//limpia buffer de entrada y salida
